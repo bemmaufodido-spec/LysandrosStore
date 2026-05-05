@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+
+body {
+    background: linear-gradient(180deg, #00f6ac 0%, #02060e 50%, #068562 100%);
+    height: 100vh;
+    margin: 0;
+}
+
+
+.contato{
+    padding: 6rem 2rem;
+}
+
+.contato-titulo{
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+}
+
+.formulario-contato{
+    max-width: 600px;
+    background: transparent;
+    margin: 0 auto;
+    backdrop-filter: blur(20px);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid #a8a3a3;
+    box-shadow: #000101 0px 4px 8px 0px;
+}
+
+.camp-form{
+    width: 100%;
+    padding: 1rem;
+    background: transparent;
+    border-radius: 8px;
+    color: #fff;
+}
+
+.grupo-form{
+    margin-bottom: 1.5rem;
+}
+
+.btn{
+    background: #fd0144;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-left: 225px;
+    margin-top: 22px;
+}
+
+.btn:hover{
+    background: #fdfdfd;
+    color: #0101f2;
+    transition: 0.3s;
+}

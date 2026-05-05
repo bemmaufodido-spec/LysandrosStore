@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="contato.css">
+    <title>Contato</title>
+</head>
+
+<body>
+    <section id="Contato" class="contato">
+        <h2 class="contato-titulo">Entre em Contato</h2>
+        <form class="formulario-contato" id="formulario" onsubmit="enviarwhats(event)">
+
+            <div class="grupo-form">
+                <input placeholder="nome" class="camp-form" id="nome">
+            </div>
+
+            <div class="grupo-form">
+                <textarea placeholder="mensagem" class="camp-form" id="mensagem"></textarea>
+                <button type="submit" class="btn">Enviar</button>
+            </div>
+        </form>
+    </section>
+
+    <script>
+        function enviarwhats(event) {
+            event.preventDefault()
+
+            const nome = document.getElementById('nome').value;
+            const mensagem = document.getElementById('mensagem').value;
+            const telefone = '244928588328' // Substitua pelo número de telefone desejado
+
+            const texto = `Olá eu me chamo ${nome}, ${mensagem}`
+            const msgFormatada = encodeURIComponent(texto)
+
+            const url = `https://wa.me/${telefone}?text=${msgFormatada}`
+
+            console.log(url)
+
+            window.open(url, `_blank`)
+        }
+    </script>
+
+</body>
+
+</html>
