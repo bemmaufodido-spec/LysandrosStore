@@ -5,40 +5,39 @@ async function enviar() {
 
   const mensagem = input.value;
 
-  console.log("Mensagem:", mensagem);
+  if (!mensagem) return;
 
-  try {
+  // mensagem do usuário
+  chat.innerHTML += `
+    <div class="msg-user">
+      ${mensagem}
+    </div>
+  `;
 
-    const resposta = await fetch(
-      "https://assistente-r3vd.onrender.com/chat",
-      {
-        method: "POST",
+  input.value = "";
 
-        headers: {
-          "Content-Type": "application/json"
-        },
+  const resposta = await fetch(
+    "https://assistente-r3vd.onrender.com/chat",
+    {
+      method: "POST",
 
-        body: JSON.stringify({
-          message: mensagem
-        })
-      }
-    );
+      headers: {
+        "Content-Type": "application/json"
+      },
 
-    console.log("STATUS:", resposta.status);
+      body: JSON.stringify({
+        message: mensagem
+      })
+    }
+  );
 
-    const data = await resposta.json();
+  const data = await resposta.json();
 
-    console.log("DATA:", data);
+  // resposta da IA
+  chat.innerHTML += `
+    <div class="msg-bot">
+      ${data.reply}
+    </div>
+  `;
 
-    chat.innerHTML += `
-      <div class="msg-bot">
-        ${data.reply || data.error}
-      </div>
-    `;
-
-  } catch (erro) {
-
-    console.error("ERRO FETCH:", erro);
-
-  }
 }

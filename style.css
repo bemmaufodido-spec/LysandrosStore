@@ -253,13 +253,15 @@ header h1:hover {
 }
 
 
-.container {
+#chat-container {
+
   position: fixed;
 
   bottom: 20px;
   right: 20px;
 
   width: 350px;
+  height: 500px;
 
   background: #181818;
 
@@ -267,17 +269,92 @@ header h1:hover {
 
   border-radius: 20px;
 
-  padding: 15px;
-
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  overflow: hidden;
 
   display: flex;
+  flex-direction: column;
+
+  z-index: 999999;
+
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+}
+
+#chat-header {
+
+  background: #2563eb;
+
+  padding: 15px;
+
+  color: white;
+
+  font-weight: bold;
+
+  text-align: center;
+}
+
+#chat {
+
+  flex: 1;
+
+  padding: 15px;
+
+  overflow-y: auto;
+
+  display: flex;
+  flex-direction: column;
+
   gap: 10px;
 
-  z-index: 9999;
+  background: #111;
+}
+
+.msg-user {
+
+  align-self: flex-end;
+
+  background: #2563eb;
+
+  color: white;
+
+  padding: 10px 14px;
+
+  border-radius: 15px 15px 0 15px;
+
+  max-width: 80%;
+
+  word-wrap: break-word;
+}
+
+.msg-bot {
+
+  align-self: flex-start;
+
+  background: #2a2a2a;
+
+  color: white;
+
+  padding: 10px 14px;
+
+  border-radius: 15px 15px 15px 0;
+
+  max-width: 80%;
+
+  word-wrap: break-word;
+}
+
+.container {
+
+  display: flex;
+
+  padding: 10px;
+
+  gap: 10px;
+
+  background: #181818;
 }
 
 .container input {
+
   flex: 1;
 
   padding: 12px;
@@ -286,21 +363,16 @@ header h1:hover {
 
   border-radius: 12px;
 
-  background: #242424;
+  background: #2a2a2a;
 
   color: white;
 
   outline: none;
-
-  font-size: 14px;
-}
-
-.container input::placeholder {
-  color: #999;
 }
 
 .container button {
-  padding: 12px 16px;
+
+  width: 50px;
 
   border: none;
 
@@ -312,13 +384,5 @@ header h1:hover {
 
   cursor: pointer;
 
-  transition: 0.2s;
-
-  font-weight: bold;
-}
-
-.container button:hover {
-  background: #3b82f6;
-
-  transform: scale(1.05);
+  font-size: 18px;
 }
