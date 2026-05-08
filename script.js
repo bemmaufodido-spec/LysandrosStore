@@ -16,7 +16,7 @@ async function enviar() {
   try {
 
     const resposta = await fetch(
-      "https://assistente-ia.onrender.com/chat",
+      "https://assistente.onrender.com/chat",
       {
         method: "POST",
 
