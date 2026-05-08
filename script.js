@@ -1,3 +1,4 @@
+console.log("SCRIPT FUNCIONANDO");
 async function enviar() {
 
   const input = document.getElementById("input");
