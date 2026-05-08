@@ -1,4 +1,3 @@
-console.log("SCRIPT FUNCIONANDO");
 async function enviar() {
 
   const input = document.getElementById("input");
@@ -6,13 +5,7 @@ async function enviar() {
 
   const mensagem = input.value;
 
-  if (!mensagem) return;
-
-  chat.innerHTML += `
-    <div class="msg-user">${mensagem}</div>
-  `;
-
-  input.value = "";
+  console.log("Mensagem:", mensagem);
 
   try {
 
@@ -26,28 +19,26 @@ async function enviar() {
         },
 
         body: JSON.stringify({
-          message: mensagem,
-
-          contexto: {
-            pagina: window.location.pathname,
-            titulo: document.title
-          }
+          message: mensagem
         })
       }
     );
 
+    console.log("STATUS:", resposta.status);
+
     const data = await resposta.json();
 
+    console.log("DATA:", data);
+
     chat.innerHTML += `
-      <div class="msg-bot">${data.reply}</div>
+      <div class="msg-bot">
+        ${data.reply || data.error}
+      </div>
     `;
 
   } catch (erro) {
 
-    chat.innerHTML += `
-      <div class="msg-bot">
-        Erro ao conectar
-      </div>
-    `;
+    console.error("ERRO FETCH:", erro);
+
   }
 }
