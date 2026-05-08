@@ -3,11 +3,16 @@ async function enviar() {
   const input = document.getElementById("input");
   const chat = document.getElementById("chat");
 
+  if (!input || !chat) {
+    console.log("CHAT OU INPUT NÃO ENCONTRADO");
+    return;
+  }
+
   const mensagem = input.value;
 
   if (!mensagem) return;
 
-  // mensagem do usuário
+  // mensagem usuário
   chat.innerHTML += `
     <div class="msg-user">
       ${mensagem}
@@ -16,28 +21,41 @@ async function enviar() {
 
   input.value = "";
 
-  const resposta = await fetch(
-    "https://assistente-r3vd.onrender.com/chat",
-    {
-      method: "POST",
+  try {
 
-      headers: {
-        "Content-Type": "application/json"
-      },
+    const resposta = await fetch(
+      "https://assistente-r3vd.onrender.com/chat",
+      {
+        method: "POST",
 
-      body: JSON.stringify({
-        message: mensagem
-      })
-    }
-  );
+        headers: {
+          "Content-Type": "application/json"
+        },
 
-  const data = await resposta.json();
+        body: JSON.stringify({
+          message: mensagem
+        })
+      }
+    );
 
-  // resposta da IA
-  chat.innerHTML += `
-    <div class="msg-bot">
-      ${data.reply}
-    </div>
-  `;
+    const data = await resposta.json();
 
+    console.log(data);
+
+    // resposta IA
+    chat.innerHTML += `
+      <div class="msg-bot">
+        ${data.reply}
+      </div>
+    `;
+
+    chat.scrollTop = chat.scrollHeight;
+
+  } catch (erro) {
+
+    console.error("ERRO:", erro);
+
+  }
 }
+
+window.enviar = enviar;

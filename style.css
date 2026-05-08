@@ -293,6 +293,8 @@ header h1:hover {
 }
 
 #chat {
+    overflow: auto;
+    height: 300px;
 
   flex: 1;
 
