@@ -56,6 +56,13 @@ async function enviar() {
     console.error("ERRO:", erro);
 
   }
+  function toggleChat() {
+
+    const chat =
+      document.getElementById("chat");
+
+    chat.classList.toggle("closed");
+  }
 }
 
 window.enviar = enviar;

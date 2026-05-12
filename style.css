@@ -433,3 +433,13 @@ header h1:hover {
 
   max-width: 80%;
 }
+
+#chat.closed {
+
+  height: 0;
+
+  padding: 0;
+
+  overflow: hidden;
+
+}
